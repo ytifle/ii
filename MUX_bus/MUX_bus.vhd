@@ -37,7 +37,7 @@ ARCHITECTURE simple OF MUX_bus IS
     BEGIN
         PROCESS (data_in0,data_in1,control) -- Lista de sensibilidades
             BEGIN
-                IF control = '0' THEN -- Si el control está a GND, escojemos el bus 0
+                IF control = '0' THEN -- Si el control esta a GND, escojemos el bus 0
                     data_out <= data_in0;
                 ELSE -- En cualquier otro caso (AVISO, INCLUYE INDETERMINADOS), selecciona el bus 1
                     data_out <= data_in1;

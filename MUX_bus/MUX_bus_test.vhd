@@ -29,7 +29,7 @@ END MUX_bus_test;
 
 ARCHITECTURE MUX_bus_arq_test OF MUX_bus_test IS
 
-    CONSTANT num_bits: POSITIVE := 2; -- Numero de bits de los buses del MUX
+    CONSTANT num_bits: POSITIVE := 3; -- Numero de bits de los buses del MUX
     CONSTANT ciclo: TIME := 10 NS; -- Tiempo de ciclo para la simulacion
 
     -- Declaracion de componentes
@@ -42,10 +42,10 @@ ARCHITECTURE MUX_bus_arq_test OF MUX_bus_test IS
                                     );
     END COMPONENT;
     
-    -- Creado de señales
+    -- Creado de signals
     
-    SIGNAL data_in0 : UNSIGNED ((num_bits-1) DOWNTO 0);
-    SIGNAL data_in1 : UNSIGNED ((num_bits-1) DOWNTO 0);
+    SIGNAL data_in0 : UNSIGNED ((num_bits-1) DOWNTO 0):=TO_UNSIGNED(0, num_bits);
+    SIGNAL data_in1 : UNSIGNED ((num_bits-1) DOWNTO 0):=TO_UNSIGNED(2**num_bits, num_bits);
     SIGNAL control : STD_LOGIC := '0';
     SIGNAL data_out:  UNSIGNED ((num_bits-1) DOWNTO 0);
     
@@ -70,7 +70,7 @@ ARCHITECTURE MUX_bus_arq_test OF MUX_bus_test IS
         control <= NOT control AFTER ciclo/2; -- Alternar cada medio ciclo.
         PROCESS
             BEGIN
-                FOR i IN 0 TO num_bits LOOP -- En orden creciente
+                FOR i IN 0 TO (2**num_bits)-1 LOOP -- En orden creciente
                     data_in0 <= TO_UNSIGNED(i, num_bits); -- Alimentar el bus 0
                     WAIT FOR ciclo; -- Una vez por ciclo
                     END LOOP;
@@ -78,8 +78,8 @@ ARCHITECTURE MUX_bus_arq_test OF MUX_bus_test IS
             
         PROCESS
             BEGIN
-                FOR i IN num_bits DOWNTO 0 LOOP -- En orden decreciente
-                    data_in1 <= TO_UNSIGNED(i, num_bits); -- Alimentar el bus 1
+                FOR j IN (2**num_bits)-1 DOWNTO 0 LOOP -- En orden decreciente
+                    data_in1 <= TO_UNSIGNED(j, num_bits); -- Alimentar el bus 1
                     WAIT FOR ciclo; -- Una vez por ciclo
                     END LOOP;
             END PROCESS;
