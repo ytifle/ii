@@ -29,7 +29,7 @@ END MUX_bus_test;
 
 ARCHITECTURE MUX_bus_arq_test OF MUX_bus_test IS
 
-    CONSTANT num_bits: POSITIVE := 3; -- Numero de bits de los buses del MUX
+    CONSTANT num_bits: POSITIVE := 6; -- Numero de bits de los buses del MUX
     CONSTANT ciclo: TIME := 10 NS; -- Tiempo de ciclo para la simulacion
 
     -- Declaracion de componentes
