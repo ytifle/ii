@@ -46,3 +46,13 @@ README
 *.do
 *.sdo
 *.wlf
+*.vnd
+*.vt
+*.vcd
+*.vo
+*.qns
+*.vwf
+transcript
+*.nvd
+*.bak1
+*.csd

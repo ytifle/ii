@@ -35,13 +35,5 @@ END MUX_bus;
 
 ARCHITECTURE simple OF MUX_bus IS
     BEGIN
-        PROCESS (control,data_in0,data_in1) -- Lista de sensibilidades
-            BEGIN
-                IF falling_edge(control) OR control = '0' THEN -- Si el control esta a GND, escojemos el bus 0
-                    data_out <= data_in0;
-                ELSE IF rising_edge(control) OR control = '1' THEN -- Si esta a VCC, la salida es el bus 1
-                      data_out <= data_in1;
-                    END IF;
-                END IF;
-        END PROCESS;
+        data_out <= data_in0 WHEN control='0' ELSE data_in1;
 END simple;

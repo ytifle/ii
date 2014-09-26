@@ -30,7 +30,7 @@ END MUX_bus_test;
 ARCHITECTURE MUX_bus_arq_test OF MUX_bus_test IS
 
     CONSTANT num_bits: POSITIVE := 6; -- Numero de bits de los buses del MUX
-    CONSTANT ciclo: TIME := 10 NS; -- Tiempo de ciclo para la simulacion
+    CONSTANT ciclo: TIME := 5 NS; -- Tiempo de ciclo para la simulacion
 
     -- Declaracion de componentes
     
@@ -67,7 +67,6 @@ ARCHITECTURE MUX_bus_arq_test OF MUX_bus_test IS
         
         -- Codigo de la simulacion
         
-        control <= NOT control AFTER ciclo/2; -- Alternar cada medio ciclo.
         PROCESS
             BEGIN
                 FOR i IN 0 TO (2**num_bits)-1 LOOP -- En orden creciente
@@ -83,5 +82,6 @@ ARCHITECTURE MUX_bus_arq_test OF MUX_bus_test IS
                     WAIT FOR ciclo; -- Una vez por ciclo
                     END LOOP;
             END PROCESS;
+        control <= NOT control AFTER ciclo/2; -- Alternar cada medio ciclo.
 
 END MUX_bus_arq_test;
