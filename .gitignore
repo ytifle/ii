@@ -51,7 +51,6 @@ README
 *.vcd
 *.vo
 *.qns
-*.vwf
 transcript
 *.nvd
 *.bak1
