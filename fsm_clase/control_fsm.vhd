@@ -15,7 +15,6 @@ entity control_fsm is
 		keys	 : in	std_logic;
 		brake	 : in	std_logic;
 		accelerate	 : in	std_logic;
-		reset	 : in	std_logic;
 		output	 : out	std_logic_vector(1 downto 0)
 	);
 
